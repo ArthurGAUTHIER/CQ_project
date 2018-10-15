@@ -1,13 +1,14 @@
 .banner {
   color: white;
+  height: 120vh;
   text-align: center;
-  height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -16,7 +17,26 @@
 .banner p {
   font-size: 25px;
   font-weight: lighter;
-  color: rgb(255, 255, 255);
-  opacity: 0.6;
-  margin-bottom: 30px;
+}
+
+.banner_content {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.private_tourism {
+  background-color: white;
+  opacity: 0.5;
+  width: 40%;
+  color: black;
+  border: 2px solid black;
+  border-radius: 25px;
+  bottom: 30px;
+}
+
+.test {
+  height: 60px;
+  width: 40px;
 }
