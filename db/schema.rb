@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_155544) do
+ActiveRecord::Schema.define(version: 2018_10_17_162635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agent_bookings", force: :cascade do |t|
+    t.bigint "agent_id"
+    t.bigint "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_agent_bookings_on_agent_id"
+    t.index ["booking_id"], name: "index_agent_bookings_on_booking_id"
+  end
+
+  create_table "agents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "rank"
+    t.integer "price_per_hour"
+    t.string "work_zone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "total_price"
+    t.string "list_of_agent"
+    t.string "location"
+    t.string "schedule"
+    t.string "date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +58,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_155544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "agent_bookings", "agents"
+  add_foreign_key "agent_bookings", "bookings"
+  add_foreign_key "bookings", "users"
 end

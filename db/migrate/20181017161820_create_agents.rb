@@ -4,7 +4,8 @@ class CreateAgents < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.integer :rank
-      t.integerwork_zone :price_per_hour
+      t.integer :price_per_hour
+      t.string :work_zone
 
       t.timestamps
     end
